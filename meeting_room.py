@@ -584,7 +584,7 @@ def view_reservations():
                 st.dataframe(past_df, hide_index=True)
 
 # --- Main App ---
-st.title("SUGAM GROUP ''')
+st.title("SUGAM GROUP ")
 st.title("_Meeting_Room_ :White[Booking System] :sunglasses:")
 
 date = CURRENT_TIME_IST.date()
