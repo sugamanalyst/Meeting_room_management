@@ -11,92 +11,113 @@ from pytz import timezone
 import pytz
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-
 # ===== CUSTOM STYLING =====
 def set_app_style():
     st.markdown(
         """
         <style>
-        /* Transparent background with light pattern */
-        # .stApp {
-        #     background-image: url("https://lh4.googleusercontent.com/proxy/2z6XO3w3Ntj-aIVJJZ1MBWSAH15H4wc0UnCodzpAJQa5gi1c_NFpom5Ke9thD48pJJhWyPu8vHHOce_4PsXTkD-UqchXjSKkjSUuwg");
-        #     background-size: cover;
-        #     background-position: center;
-        #     background-repeat: repeat;
-        #     background-attachment: fixed;
-        #     background-color: rgba(255, 255, 255, 0.1);
-        #     background-blend-mode: overlay;
+        /* Modern white theme with subtle accents */
+        .stApp {
+            background-color: #f9f9f9;
+            background-image: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 100%);
         }
-        /* Main title - dark blue */
+        
+        /* Main title - deep blue with gradient */
         h1 {
-            color: #0000FF !important;  /* Dark blue */
+            color: #1a3e8c !important;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 700;
+            border-bottom: 2px solid #e1e8f0;
+            padding-bottom: 8px;
+            margin-bottom: 1.5rem;
         }
-        /* Section headers - dark blue */
+        
+        /* Section headers - softer blue */
         h2 {
-            color: #0000FF !important;  /* Dark blue */
+            color: #2a56c6 !important;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 600;
+            margin-top: 1.8rem;
         }
-        /* Section headers - dark blue */
+        
+        /* Subheaders - lighter blue */
         h3 {
-            color: #0000FF !important;  /* Dark blue */
+            color: #4a7df8 !important;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 500;
         }
         
-        /* Main content area - black text */
-        .main-container, 
-        .stMarkdown, 
-        .stText, 
-        .stAlert, 
-        .stButton>button,
-        .stTextInput>label,
-        .stSelectbox>label,
-        .stDateInput>label,
-        .stTimeInput>label,
-        .stNumberInput>label,
-        .stDataFrame,
-        .stTable {
-            color: #000000 !important;
-        }
-        
-        /* Sidebar - white text */
-        [data-testid="stSidebar"] * {
-            color: #000000 !important;
-        }
-        
-        /* Sidebar background */
-        [data-testid="stSidebar"] {
-            background-color: #1a1a1a !important;
-        }
-        
-        /* Content container */
+        /* Content containers */
         .main-container {
-            background-color: rgba(255, 255, 255, 0.86);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 80px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem;
+            margin-bottom: 100px;
+            border: 1px solid #f0f0f0;
         }
         
-        /* Footer styling */
+        /* Sidebar - light gray with dark text */
+        [data-testid="stSidebar"] {
+            background-color: #f8f9fa !important;
+            border-right: 1px solid #eaeaea;
+        }
+        [data-testid="stSidebar"] * {
+            color: #333333 !important;
+        }
+        
+        /* Interactive elements */
+        .stButton>button {
+            background-color: #1a3e8c !important;
+            color: white !important;
+            border-radius: 8px !important;
+            border: none;
+            padding: 8px 16px;
+            transition: all 0.3s;
+        }
+        .stButton>button:hover {
+            background-color: #2a56c6 !important;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Input fields */
+        .stTextInput>div>div>input,
+        .stSelectbox>div>select,
+        .stDateInput>div>input,
+        .stTimeInput>div>input,
+        .stNumberInput>div>input {
+            border: 1px solid #e0e0e0 !important;
+            border-radius: 8px !important;
+            padding: 10px !important;
+        }
+        
+        /* Footer */
         .footer {
             position: fixed;
-            left: 0;
             bottom: 0;
             width: 100%;
-            text-align: center;
-            padding: 10px 0;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-top: 1px solid #eee;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 0;
+            border-top: 1px solid #eaeaea;
             z-index: 100;
-        }
-        .footer img {
-            height: 28px;
-            opacity: 0.8;
-            margin-bottom: 5px;
+            backdrop-filter: blur(5px);
         }
         .footer p {
-            color: #555 !important;
-            font-size: 0.7rem;
+            color: #666 !important;
+            font-size: 0.75rem;
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .footer a {
+            color: #2a56c6 !important;
+            text-decoration: none;
+        }
+        
+        /* Tables/DataFrames */
+        .stDataFrame, .stTable {
+            border-radius: 8px !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
         }
         </style>
         """,
