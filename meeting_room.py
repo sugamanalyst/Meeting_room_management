@@ -24,7 +24,7 @@ def set_app_style():
             background-position: center;
             background-repeat: repeat;
             background-attachment: fixed;
-            background-color: rgba(255, 255, 255, 0.88);
+            background-color: rgba(255, 255, 255, 0.9);
             background-blend-mode: overlay;
         }
         /* Main title - dark blue */
