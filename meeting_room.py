@@ -567,7 +567,7 @@ def main():
         """
         <div class="footer">
             <img src="https://www.sugamgroup.com/wp-content/uploads/logo-1.png">
-            <p>© 2023 Sugam Group | Developed by Corporate Sandeep & Tinku </p>
+            <p>© 2025 Sugam Group </p>
         </div>
         """,
         unsafe_allow_html=True
