@@ -17,145 +17,126 @@ def set_app_style():
     st.markdown(
         """
         <style>
-        /* Base dark theme */
+        /* ===== ULTIMATE DARK THEME ===== */
+        :root {
+            --primary: #3a86ff;
+            --secondary: #8338ec;
+            --background: #0d1117;
+            --card: #161b22;
+            --text: #e6edf3;
+            --border: #30363d;
+            --cursor: #3a86ff; /* Custom cursor color */
+        }
+        
+        /* Base Styling */
         .stApp {
-            background-color: #121212;
-            background-image: linear-gradient(to bottom, #0a0a0a 0%, #1e1e1e 100%);
-            color: #e0e0e0 !important;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
         }
         
-        /* Typography - White/Blue hierarchy */
+        /* Fix for text cursor visibility */
+        input, textarea, select {
+            caret-color: var(--cursor) !important; /* Visible cursor */
+        }
+        
+        /* Typography */
         h1 {
-            color: #64b5f6 !important;
-            font-family: 'Segoe UI', sans-serif;
-            font-weight: 700;
-            border-bottom: 2px solid #333;
-            padding-bottom: 8px;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
-        h2 {
-            color: #90caf9 !important;
-            font-family: 'Segoe UI', sans-serif;
-            font-weight: 600;
-            margin-top: 1.8rem;
-        }
-        h3 {
-            color: #bbdefb !important;
-            font-family: 'Segoe UI', sans-serif;
-            font-weight: 500;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding-bottom: 12px;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
         }
         
-        /* Content containers - Dark card */
-        .main-container {
-            background-color: rgba(30, 30, 30, 0.9) !important;
-            border-radius: 12px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-            padding: 2.5rem !important;
-            margin-bottom: 100px !important;
-            border: 1px solid #333 !important;
-            color: #e0e0e0 !important;
-        }
-        
-        /* Sidebar - Dark gray */
-        [data-testid="stSidebar"] {
-            background-color: #1a1a1a !important;
-            border-right: 1px solid #444 !important;
-        }
-        [data-testid="stSidebar"] * {
-            color: #e0e0e0 !important;
-        }
-        
-        /* Input field labels - Light blue */
-        .stTextInput>label,
-        .stSelectbox>label,
-        .stDateInput>label,
-        .stTimeInput>label,
-        .stNumberInput>label,
-        .stSlider>label,
-        .stFileUploader>label,
-        .stRadio>label,
-        .stCheckbox>label,
-        .stMultiselect>label {
-            color: #bbdefb !important;
-            font-weight: 500 !important;
-        }
-        
-        /* Interactive elements - Blue accent */
-        .stButton>button {
-            background-color: #1976d2 !important;
-            color: white !important;
-            border-radius: 8px !important;
-            border: none !important;
-            padding: 8px 16px !important;
+        /* Input Fields - Enhanced Visibility */
+        .stTextInput>div>div>input,
+        .stTextArea>textarea,
+        .stSelectbox>div>select,
+        .stNumberInput>div>input {
+            background: #1a2029 !important;
+            border: 2px solid var(--border) !important;
+            color: var(--text) !important;
+            padding: 12px 16px !important;
+            border-radius: 10px !important;
             transition: all 0.3s !important;
         }
-        .stButton>button:hover {
-            background-color: #2196f3 !important;
-            transform: translateY(-1px) !important;
-            box-shadow: 0 2px 12px rgba(33, 150, 243, 0.3) !important;
-        }
         
-        /* Input fields - Dark with glow */
-        .stTextInput>div>div>input,
-        .stSelectbox>div>select,
-        .stDateInput>div>input,
-        .stTimeInput>div>input,
-        .stNumberInput>div>input {
-            background-color: #2d2d2d !important;
-            border: 1px solid #444 !important;
-            color: #e0e0e0 !important;
-            border-radius: 8px !important;
-            padding: 10px !important;
-        }
         .stTextInput>div>div>input:focus,
-        .stSelectbox>div>select:focus {
-            border-color: #64b5f6 !important;
-            box-shadow: 0 0 0 2px rgba(100, 181, 246, 0.2) !important;
+        .stTextArea>textarea:focus {
+            border-color: var(--primary) !important;
+            box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2) !important;
+            outline: none !important;
         }
         
-        /* Tables */
+        /* Tables - Modern Styling */
         .stDataFrame, .stTable {
-            background-color: #1e1e1e !important;
-            border-radius: 8px !important;
-            border: 1px solid #444 !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 12px !important;
+            overflow: hidden !important;
         }
         
-        /* Footer - Glassmorphism effect */
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: rgba(26, 26, 26, 0.85) !important;
-            padding: 12px 0 !important;
-            border-top: 1px solid #333 !important;
-            z-index: 100 !important;
-            backdrop-filter: blur(8px) !important;
-        }
-        .footer p {
-            color: #aaa !important;
-            font-size: 0.75rem !important;
-            margin: 0 !important;
-            font-family: 'Segoe UI', sans-serif !important;
-        }
-        .footer a {
-            color: #64b5f6 !important;
-            text-decoration: none !important;
+        table {
+            width: 100% !important;
         }
         
-        /* Custom scrollbar */
+        th {
+            background: linear-gradient(var(--card), #1a2029) !important;
+            color: var(--primary) !important;
+            padding: 16px !important;
+            font-weight: 600 !important;
+        }
+        
+        td {
+            padding: 12px 16px !important;
+            border-bottom: 1px solid var(--border) !important;
+        }
+        
+        tr:hover td {
+            background: rgba(58, 134, 255, 0.05) !important;
+        }
+        
+        /* Dialogs & Popups */
+        .stModal .stDialog {
+            background: var(--card) !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 12px !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+        }
+        
+        /* Sidebar - Improved Contrast */
+        [data-testid="stSidebar"] {
+            background: var(--card) !important;
+            border-right: 1px solid var(--border) !important;
+        }
+        
+        /* Buttons - Animated Gradient */
+        .stButton>button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+            border: none !important;
+            color: white !important;
+            padding: 12px 24px !important;
+            border-radius: 10px !important;
+            font-weight: 600 !important;
+            transition: all 0.3s !important;
+        }
+        
+        .stButton>button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(58, 134, 255, 0.3) !important;
+        }
+        
+        /* Scrollbar - Custom Styling */
         ::-webkit-scrollbar {
-            width: 8px !important;
+            width: 10px;
+            height: 10px;
         }
-        ::-webkit-scrollbar-track {
-            background: #1e1e1e !important;
-        }
+        
         ::-webkit-scrollbar-thumb {
-            background: #444 !important;
-            border-radius: 4px !important;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555 !important;
+            background: var(--primary);
+            border-radius: 10px;
         }
         </style>
         """,
@@ -163,6 +144,7 @@ def set_app_style():
     )
 
 set_app_style()
+
 # --- Configuration ---
 st.set_page_config(
     page_title="Meeting Room Booking",
@@ -278,7 +260,8 @@ def add_booking_to_sheet(booking_data):
 def remove_booking_from_sheet(booking_id):
     cell = worksheet.find(str(booking_id))
     if cell:
-        worksheet.delete_row(cell.row)
+        # worksheet.delete_row(cell.row)
+        continue
 
 # Load existing booking data
 booking_data = get_all_bookings()
