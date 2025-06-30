@@ -12,10 +12,12 @@ import pytz
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
+# ===== CUSTOM STYLING =====
 def set_app_style():
     st.markdown(
         """
         <style>
+        /* Transparent background with light pattern */
         .stApp {
             background-image: url("https://lh4.googleusercontent.com/proxy/2z6XO3w3Ntj-aIVJJZ1MBWSAH15H4wc0UnCodzpAJQa5gi1c_NFpom5Ke9thD48pJJhWyPu8vHHOce_4PsXTkD-UqchXjSKkjSUuwg");
             background-size: cover;
@@ -25,17 +27,43 @@ def set_app_style():
             background-color: rgba(255, 255, 255, 0.9);
             background-blend-mode: overlay;
         }
+        
+        /* Main content area - black text */
+        .main-container, 
+        .stMarkdown, 
+        .stText, 
+        .stAlert, 
+        .stButton>button,
+        .stTextInput>label,
+        .stSelectbox>label,
+        .stDateInput>label,
+        .stTimeInput>label,
+        .stNumberInput>label,
+        .stDataFrame,
+        .stTable {
+            color: #000000 !important;
+        }
+        
+        /* Sidebar - white text */
+        [data-testid="stSidebar"] * {
+            color: #ffffff !important;
+        }
+        
+        /* Sidebar background */
+        [data-testid="stSidebar"] {
+            background-color: #1a1a1a !important;
+        }
+        
+        /* Content container */
         .main-container {
             background-color: rgba(255, 255, 255, 0.85);
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             margin-bottom: 80px;
-            color: #333333 !important;
         }
-        h1, h2, h3, h4, h5, h6, p, div, span {
-            color: #333333 !important;
-        }
+        
+        /* Footer styling */
         .footer {
             position: fixed;
             left: 0;
@@ -64,7 +92,6 @@ def set_app_style():
     )
 
 set_app_style()
-
 
 # --- Configuration ---
 st.set_page_config(
@@ -547,20 +574,26 @@ def view_reservations():
                 past_df.columns = ["ID", "Date", "Start", "End", "Room", "Booked By", "Meeting"]
                 st.dataframe(past_df, hide_index=True)
 
-# ===== MAIN APP =====
-def main():
-    with st.container():
-        st.title("Sugam Group - Meeting Room Booking")
-        st.markdown("---")
-        
-        menu_choice = st.sidebar.selectbox("Menu", ["Book a Room", "Cancel Booking", "View Bookings"])
-        
-        if menu_choice == "Book a Room":
-            book_room()
-        elif menu_choice == "Cancel Booking":
-            cancel_booking()
-        elif menu_choice == "View Bookings":
-            view_bookings()
+# --- Main App ---
+st.title("Meeting Room Booking System")
+
+date = CURRENT_TIME_IST.date()
+time1 = CURRENT_TIME_IST.time()
+current_time1 = f"{time1.hour:02d}:{time1.minute:02d}"
+
+st.sidebar.button('Timezone 📍 Asia/Kolkata')
+st.sidebar.button(f"Today's Date 🗓️ {date}")
+st.sidebar.button(f"Current Time ⏰ {current_time1}")
+
+menu_choice = st.sidebar.selectbox("Menu", ["Book a Room", "Cancel Booking", "View Bookings"])
+
+if menu_choice == "Book a Room":
+    book_room()
+elif menu_choice == "Cancel Booking":
+    cancel_room()
+elif menu_choice == "View Bookings":
+    view_reservations()
+
     
     # ===== FOOTER =====
     st.markdown(
