@@ -12,6 +12,58 @@ import pytz
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
+# ===== BACKGROUND AND STYLING =====
+def set_app_style():
+    st.markdown(
+        """
+        <style>
+        .stApp {
+            background-image: url("https://lh4.googleusercontent.com/proxy/2z6XO3w3Ntj-aIVJJZ1MBWSAH15H4wc0UnCodzpAJQa5gi1c_NFpom5Ke9thD48pJJhWyPu8vHHOce_4PsXTkD-UqchXjSKkjSUuwg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-color: rgba(255, 255, 255, 0.9);
+            background-blend-mode: overlay;
+        }
+        .main-container {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 80px;
+        }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid #eee;
+            z-index: 100;
+        }
+        .footer img {
+            height: 28px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+        .footer p {
+            color: #555;
+            font-size: 0.7rem;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+set_app_style()
+
+
+
 # --- Configuration ---
 st.set_page_config(
     page_title="Meeting Room Booking",
@@ -512,3 +564,17 @@ elif menu_choice == "Cancel Booking":
     cancel_room()
 elif menu_choice == "View Bookings":
     view_reservations()
+
+    # ===== FOOTER =====
+    st.markdown(
+        """
+        <div class="footer">
+            <img src="https://www.sugamgroup.com/wp-content/uploads/logo-1.png">
+            <p>© 2023 Sugam Group | Developed by Sandeep and Tinku </p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+if __name__ == "__main__":
+    main()
