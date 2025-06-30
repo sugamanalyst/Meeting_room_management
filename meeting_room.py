@@ -18,20 +18,19 @@ def set_app_style():
         """
         <style>
         /* Transparent background with light pattern */
-        .stApp {
-            background-image: url("https://lh4.googleusercontent.com/proxy/2z6XO3w3Ntj-aIVJJZ1MBWSAH15H4wc0UnCodzpAJQa5gi1c_NFpom5Ke9thD48pJJhWyPu8vHHOce_4PsXTkD-UqchXjSKkjSUuwg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: repeat;
-            background-attachment: fixed;
-            background-color: rgba(255, 255, 255, 0.1);
-            background-blend-mode: overlay;
+        # .stApp {
+        #     background-image: url("https://lh4.googleusercontent.com/proxy/2z6XO3w3Ntj-aIVJJZ1MBWSAH15H4wc0UnCodzpAJQa5gi1c_NFpom5Ke9thD48pJJhWyPu8vHHOce_4PsXTkD-UqchXjSKkjSUuwg");
+        #     background-size: cover;
+        #     background-position: center;
+        #     background-repeat: repeat;
+        #     background-attachment: fixed;
+        #     background-color: rgba(255, 255, 255, 0.1);
+        #     background-blend-mode: overlay;
         }
         /* Main title - dark blue */
         h1 {
             color: #0000FF !important;  /* Dark blue */
         }
-        
         /* Section headers - dark blue */
         h2 {
             color: #0000FF !important;  /* Dark blue */
