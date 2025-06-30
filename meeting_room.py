@@ -29,12 +29,16 @@ def set_app_style():
         }
         /* Main title - dark blue */
         h1 {
-            color: #ffffff !important;  /* Dark blue */
+            color: #0000FF !important;  /* Dark blue */
         }
         
         /* Section headers - dark blue */
         h2 {
-            color: #ffffff !important;  /* Dark blue */
+            color: #0000FF !important;  /* Dark blue */
+        }
+        /* Section headers - dark blue */
+        h3 {
+            color: #0000FF !important;  /* Dark blue */
         }
         
         /* Main content area - black text */
@@ -322,7 +326,7 @@ def send_confirmation_email(booking_info):
             </tr>
         </table>
         <p>Get ready for a productive meeting!</p>
-        <p>Best regards,<br>Meeting Room Booking Team</p>
+        <p>Best regards,<br>Meeting Room Booking Team <br> SUGAM GROUP</p>
     </body>
     </html>
     """
