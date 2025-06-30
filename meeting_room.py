@@ -260,7 +260,7 @@ def add_booking_to_sheet(booking_data):
 def remove_booking_from_sheet(booking_id):
     cell = worksheet.find(str(booking_id))
     if cell:
-        # worksheet.delete_row(cell.row)
+        True
             
 
 # Load existing booking data
