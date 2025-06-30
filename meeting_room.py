@@ -261,7 +261,7 @@ def remove_booking_from_sheet(booking_id):
     cell = worksheet.find(str(booking_id))
     if cell:
         # worksheet.delete_row(cell.row)
-            continue
+            
 
 # Load existing booking data
 booking_data = get_all_bookings()
