@@ -24,17 +24,17 @@ def set_app_style():
             background-position: center;
             background-repeat: repeat;
             background-attachment: fixed;
-            background-color: rgba(255, 255, 255, 0.45);
+            background-color: rgba(255, 255, 255, 0.23);
             background-blend-mode: overlay;
         }
         /* Main title - dark blue */
         h1 {
-            color: #000080 !important;  /* Dark blue */
+            color: #ffffff !important;  /* Dark blue */
         }
         
         /* Section headers - dark blue */
         h2 {
-            color: #000080 !important;  /* Dark blue */
+            color: #ffffff !important;  /* Dark blue */
         }
         
         /* Main content area - black text */
