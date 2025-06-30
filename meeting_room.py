@@ -27,6 +27,15 @@ def set_app_style():
             background-color: rgba(255, 255, 255, 0.9);
             background-blend-mode: overlay;
         }
+        /* Main title - dark blue */
+        h1 {
+            color: #000080 !important;  /* Dark blue */
+        }
+        
+        /* Section headers - dark blue */
+        h2 {
+            color: #000080 !important;  /* Dark blue */
+        }
         
         /* Main content area - black text */
         .main-container, 
