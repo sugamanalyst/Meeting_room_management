@@ -381,7 +381,7 @@ def send_cancellation_email(booking_info):
 
 # --- Booking Functions ---
 def book_room():
-    st.header("Book a Room")
+    st.header("Choose Meeting Room")
     date = st.date_input("Select Date:", min_value=CURRENT_TIME_IST.date(), value=None)
     current_date = CURRENT_TIME_IST.date()
     
