@@ -585,7 +585,7 @@ def view_reservations():
 
 # --- Main App ---
 st.title(" SUGAM GROUP ")
-st.title(":office: Meeting Room :blue[Booking System] :calendar:")
+st.title("Meeting Room Booking System :calendar:")
 
 date = CURRENT_TIME_IST.date()
 time1 = CURRENT_TIME_IST.time()
