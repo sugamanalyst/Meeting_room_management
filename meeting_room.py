@@ -12,7 +12,6 @@ import pytz
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
-# ===== BACKGROUND AND STYLING =====
 def set_app_style():
     st.markdown(
         """
@@ -32,6 +31,10 @@ def set_app_style():
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             margin-bottom: 80px;
+            color: #333333 !important;
+        }
+        h1, h2, h3, h4, h5, h6, p, div, span {
+            color: #333333 !important;
         }
         .footer {
             position: fixed;
@@ -50,7 +53,7 @@ def set_app_style():
             margin-bottom: 5px;
         }
         .footer p {
-            color: #555;
+            color: #555 !important;
             font-size: 0.7rem;
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -61,7 +64,6 @@ def set_app_style():
     )
 
 set_app_style()
-
 
 
 # --- Configuration ---
@@ -545,32 +547,27 @@ def view_reservations():
                 past_df.columns = ["ID", "Date", "Start", "End", "Room", "Booked By", "Meeting"]
                 st.dataframe(past_df, hide_index=True)
 
-# --- Main App ---
-st.title("Meeting Room Booking System")
-
-date = CURRENT_TIME_IST.date()
-time1 = CURRENT_TIME_IST.time()
-current_time1 = f"{time1.hour:02d}:{time1.minute:02d}"
-
-st.sidebar.button('Timezone 📍 Asia/Kolkata')
-st.sidebar.button(f"Today's Date 🗓️ {date}")
-st.sidebar.button(f"Current Time ⏰ {current_time1}")
-
-menu_choice = st.sidebar.selectbox("Menu", ["Book a Room", "Cancel Booking", "View Bookings"])
-
-if menu_choice == "Book a Room":
-    book_room()
-elif menu_choice == "Cancel Booking":
-    cancel_room()
-elif menu_choice == "View Bookings":
-    view_reservations()
-
+# ===== MAIN APP =====
+def main():
+    with st.container():
+        st.title("Sugam Group - Meeting Room Booking")
+        st.markdown("---")
+        
+        menu_choice = st.sidebar.selectbox("Menu", ["Book a Room", "Cancel Booking", "View Bookings"])
+        
+        if menu_choice == "Book a Room":
+            book_room()
+        elif menu_choice == "Cancel Booking":
+            cancel_booking()
+        elif menu_choice == "View Bookings":
+            view_bookings()
+    
     # ===== FOOTER =====
     st.markdown(
         """
         <div class="footer">
             <img src="https://www.sugamgroup.com/wp-content/uploads/logo-1.png">
-            <p>© 2023 Sugam Group | Developed by Sandeep and Tinku </p>
+            <p>© 2023 Sugam Group | Developed by Corporate Sandeep & Tinku </p>
         </div>
         """,
         unsafe_allow_html=True
