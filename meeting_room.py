@@ -11,6 +11,8 @@ from pytz import timezone
 import pytz
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+
+
 def set_app_style():
     st.markdown(
         """
@@ -36,78 +38,124 @@ def set_app_style():
             color: #90caf9 !important;
             font-family: 'Segoe UI', sans-serif;
             font-weight: 600;
-            margin        
-        /* Content containers */
-        .main-container {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            padding: 2.5rem;
-            margin-bottom: 100px;
-            border: 1px solid #f0f0f0;
+            margin-top: 1.8rem;
+        }
+        h3 {
+            color: #bbdefb !important;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 500;
         }
         
-        /* Sidebar - light gray with dark text */
+        /* Content containers - Dark card */
+        .main-container {
+            background-color: rgba(30, 30, 30, 0.9) !important;
+            border-radius: 12px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+            padding: 2.5rem !important;
+            margin-bottom: 100px !important;
+            border: 1px solid #333 !important;
+            color: #e0e0e0 !important;
+        }
+        
+        /* Sidebar - Dark gray */
         [data-testid="stSidebar"] {
-            background-color: #f8f9fa !important;
-            border-right: 1px solid #eaeaea;
+            background-color: #1a1a1a !important;
+            border-right: 1px solid #444 !important;
         }
         [data-testid="stSidebar"] * {
-            color: #333333 !important;
+            color: #e0e0e0 !important;
         }
         
-        /* Interactive elements */
+        /* Input field labels - Light blue */
+        .stTextInput>label,
+        .stSelectbox>label,
+        .stDateInput>label,
+        .stTimeInput>label,
+        .stNumberInput>label,
+        .stSlider>label,
+        .stFileUploader>label,
+        .stRadio>label,
+        .stCheckbox>label,
+        .stMultiselect>label {
+            color: #bbdefb !important;
+            font-weight: 500 !important;
+        }
+        
+        /* Interactive elements - Blue accent */
         .stButton>button {
-            background-color: #1a3e8c !important;
+            background-color: #1976d2 !important;
             color: white !important;
             border-radius: 8px !important;
-            border: none;
-            padding: 8px 16px;
-            transition: all 0.3s;
+            border: none !important;
+            padding: 8px 16px !important;
+            transition: all 0.3s !important;
         }
         .stButton>button:hover {
-            background-color: #2a56c6 !important;
-            transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background-color: #2196f3 !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 2px 12px rgba(33, 150, 243, 0.3) !important;
         }
         
-        /* Input fields */
+        /* Input fields - Dark with glow */
         .stTextInput>div>div>input,
         .stSelectbox>div>select,
         .stDateInput>div>input,
         .stTimeInput>div>input,
         .stNumberInput>div>input {
-            border: 1px solid #e0e0e0 !important;
+            background-color: #2d2d2d !important;
+            border: 1px solid #444 !important;
+            color: #e0e0e0 !important;
             border-radius: 8px !important;
             padding: 10px !important;
         }
+        .stTextInput>div>div>input:focus,
+        .stSelectbox>div>select:focus {
+            border-color: #64b5f6 !important;
+            box-shadow: 0 0 0 2px rgba(100, 181, 246, 0.2) !important;
+        }
         
-        /* Footer */
+        /* Tables */
+        .stDataFrame, .stTable {
+            background-color: #1e1e1e !important;
+            border-radius: 8px !important;
+            border: 1px solid #444 !important;
+        }
+        
+        /* Footer - Glassmorphism effect */
         .footer {
             position: fixed;
             bottom: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 12px 0;
-            border-top: 1px solid #eaeaea;
-            z-index: 100;
-            backdrop-filter: blur(5px);
+            background: rgba(26, 26, 26, 0.85) !important;
+            padding: 12px 0 !important;
+            border-top: 1px solid #333 !important;
+            z-index: 100 !important;
+            backdrop-filter: blur(8px) !important;
         }
         .footer p {
-            color: #666 !important;
-            font-size: 0.75rem;
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
+            color: #aaa !important;
+            font-size: 0.75rem !important;
+            margin: 0 !important;
+            font-family: 'Segoe UI', sans-serif !important;
         }
         .footer a {
-            color: #2a56c6 !important;
-            text-decoration: none;
+            color: #64b5f6 !important;
+            text-decoration: none !important;
         }
         
-        /* Tables/DataFrames */
-        .stDataFrame, .stTable {
-            border-radius: 8px !important;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px !important;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e1e1e !important;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #444 !important;
+            border-radius: 4px !important;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555 !important;
         }
         </style>
         """,
@@ -115,7 +163,6 @@ def set_app_style():
     )
 
 set_app_style()
-
 # --- Configuration ---
 st.set_page_config(
     page_title="Meeting Room Booking",
