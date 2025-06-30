@@ -24,7 +24,7 @@ def set_app_style():
             background-position: center;
             background-repeat: repeat;
             background-attachment: fixed;
-            background-color: rgba(255, 255, 255, 0.23);
+            background-color: rgba(255, 255, 255, 0.88);
             background-blend-mode: overlay;
         }
         /* Main title - dark blue */
@@ -55,7 +55,7 @@ def set_app_style():
         
         /* Sidebar - white text */
         [data-testid="stSidebar"] * {
-            color: #ffffff !important;
+            color: #000000 !important;
         }
         
         /* Sidebar background */
