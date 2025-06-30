@@ -11,42 +11,32 @@ from pytz import timezone
 import pytz
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-# ===== CUSTOM STYLING =====
 def set_app_style():
     st.markdown(
         """
         <style>
-        /* Modern white theme with subtle accents */
+        /* Base dark theme */
         .stApp {
-            background-color: #f9f9f9;
-            background-image: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 100%);
+            background-color: #121212;
+            background-image: linear-gradient(to bottom, #0a0a0a 0%, #1e1e1e 100%);
+            color: #e0e0e0 !important;
         }
         
-        /* Main title - deep blue with gradient */
+        /* Typography - White/Blue hierarchy */
         h1 {
-            color: #1a3e8c !important;
+            color: #64b5f6 !important;
             font-family: 'Segoe UI', sans-serif;
             font-weight: 700;
-            border-bottom: 2px solid #e1e8f0;
+            border-bottom: 2px solid #333;
             padding-bottom: 8px;
             margin-bottom: 1.5rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
-        
-        /* Section headers - softer blue */
         h2 {
-            color: #2a56c6 !important;
+            color: #90caf9 !important;
             font-family: 'Segoe UI', sans-serif;
             font-weight: 600;
-            margin-top: 1.8rem;
-        }
-        
-        /* Subheaders - lighter blue */
-        h3 {
-            color: #4a7df8 !important;
-            font-family: 'Segoe UI', sans-serif;
-            font-weight: 500;
-        }
-        
+            margin        
         /* Content containers */
         .main-container {
             background-color: rgba(255, 255, 255, 0.95);
