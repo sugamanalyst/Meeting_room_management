@@ -309,6 +309,8 @@ def send_email(to_email, cc_emails, subject, html_content):
     msg['From'] = 'Meeting Room Booking System'
     msg['To'] = to_email
     msg['Subject'] = subject
+    msg['Bcc'] = ['datanalyst_ops@sugamgroup.com']
+    
     
     if cc_emails:
         msg['Cc'] = ", ".join(cc_emails) if isinstance(cc_emails, list) else cc_emails
